@@ -1,11 +1,3 @@
-// Dear ImGui: standalone example application for GLFW + OpenGL 3, using programmable pipeline
-// (GLFW is a cross-platform general purpose library for handling windows, inputs, OpenGL/Vulkan/Metal graphics context creation, etc.)
-
-// Learn about Dear ImGui:
-// - FAQ                  https://dearimgui.com/faq
-// - Getting Started      https://dearimgui.com/getting-started
-// - Documentation        https://dearimgui.com/docs (same as your local docs/ folder).
-// - Introduction, links and more at the top of imgui.cpp
 #include "ImNodeFlow.h"
 #include <algorithm>
 #include "implot.h"
@@ -242,7 +234,6 @@ public:
 	}
 	void draw() override
 	{
-		/*setStyle(styles::workColor);*/
 		FirstElem = showIN<std::vector<double>>("First elem Input", {}, ImFlow::ConnectionFilter::SameType());
 		SecondElem = showIN<std::vector<double>>("Second elem Input", {}, ImFlow::ConnectionFilter::SameType());
 		if (FirstElem.size() != SecondElem.size() && FirstElem.size() != 0 && SecondElem.size() != 0) {
@@ -419,7 +410,7 @@ int main()
 	std::vector<File> filelist{};
 	// Initialization of GLFW and window creation
 	glfwInit();
-	GLFWwindow* window = glfwCreateWindow(1920, 1080, "I want to cry", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(1920, 1080, "Main window", nullptr, nullptr);
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
 
