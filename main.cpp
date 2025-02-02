@@ -22,10 +22,10 @@ namespace styles {
 	auto fileColor = std::make_shared<ImFlow::NodeStyle>(IM_COL32(47, 235, 219, 255), ImColor(0, 0, 0), 6.5f);
 	auto workColor = std::make_shared<ImFlow::NodeStyle>(IM_COL32(0, 0, 0, 255), ImColor(255, 255, 255, 255), 6.5f);
 	auto graphColor = std::make_shared<ImFlow::NodeStyle>(IM_COL32(240, 224, 10, 255), ImColor(0, 0, 0), 6.5f);
-};
+}; // Выделенная область со стилями нод
 
 
-std::vector<double> ReadColumn(std::string fname, char spf) {
+std::vector<double> ReadColumn(std::string fname, char spf) { //Функция чтения колонны из переданного файла
 	std::vector<double> v{};
 	int k = 0;
 	std::string s{}, buffer{};
@@ -111,7 +111,7 @@ std::vector<double> ReadColumn(std::string fname, char spf) {
 
 
 
-class File {
+class File { // Класс, содержащий в себе колонки данных
 public:
 	std::vector<double> x{};
 	std::vector<double> y{};
@@ -128,7 +128,7 @@ public:
 };
 
 
-class FileNode : public ImFlow::BaseNode
+class FileNode : public ImFlow::BaseNode //Нода, передающая из себя вектора данных из файла
 {
 public:
 	FileNode(File file)
@@ -152,7 +152,7 @@ public:
 };
 
 
-class Plotting : public ImFlow::BaseNode {
+class Plotting : public ImFlow::BaseNode { //Нода, в которую передаются вектора данных, передаёт данные в класс построения графиков
 private:
 	std::shared_ptr<std::vector<double>> Yaxis;
 	std::shared_ptr<std::vector<double>> Xaxis;
@@ -186,7 +186,7 @@ public:
 };
 
 
-class GraphingNode {
+class GraphingNode { //Класс, строящий графики
 private:
 	std::string title;
 	static inline unsigned count{};
@@ -220,7 +220,7 @@ public:
 };
 
 
-class SummationNode : public ImFlow::BaseNode
+class SummationNode : public ImFlow::BaseNode //Нода суммирования
 {
 private:
 	std::vector<double> FirstElem;
@@ -263,7 +263,7 @@ private:
 };
 
 
-class MultiplicationNode : public ImFlow::BaseNode {
+class MultiplicationNode : public ImFlow::BaseNode { //Нода умножения
 private:
 	std::vector<double> FirstElem;
 	std::vector<double> SecondElem;
@@ -315,7 +315,7 @@ public:
 };
 
 
-class FourierExpansion : public ImFlow::BaseNode {
+class FourierExpansion : public ImFlow::BaseNode { //Нода разложения в ряд Фурье (не закончена, необходима доработка)
 	std::vector<double> x{};
 	std::vector<double> y{};
 	std::vector<double> y1{};
@@ -368,7 +368,7 @@ public:
 };
 
 
-class IntegralNode : public ImFlow::BaseNode {
+class IntegralNode : public ImFlow::BaseNode { //Нода, вычисляющая площадь под графиком (Определённый интеграл)
 	std::vector<double> x{};
 	std::vector<double> y{};
 public:
@@ -480,7 +480,6 @@ int main()
 							0);
 					}
 				}
-				delete[] s;
 			}
 		}
 		for (int i = 0; i < GraphVector.size(); i++) {
